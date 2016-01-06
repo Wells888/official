@@ -1,5 +1,3 @@
 Flask==0.10.1
 Flask-SQLAlchemy==2.1
-SQlAlchemy==0.9.10
-Jinja2==2.8
 
