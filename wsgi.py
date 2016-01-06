@@ -12,6 +12,8 @@ except IOError:
 # line, it's possible required libraries won't be in your searchable path
 #
 
+from officialapp import app as application
+
 def application(environ, start_response):
 
     ctype = 'text/plain'
@@ -305,3 +307,4 @@ if __name__ == '__main__':
     httpd = make_server('localhost', 8051, application)
     # Wait for a single request, serve it and quit.
     httpd.handle_request()
+    #httpd.serve_forever()
