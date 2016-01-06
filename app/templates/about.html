@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block HEADER_CONTENT %}
+{% endblock %}
+
+{% block BODY_CONTENT %}
+    <script>
+       function listItems(obj){
+           $(obj).next("ul").toggle(240);
+       }
+    </script>
+
+    <!--content-->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title black"><span>About Hopolite</span></div>
+                            <div class="info-panel-content">
+                               <ul class="item-list">
+                                   <li><a href="#introduction"><span>Introduction</span></a></li>
+                                   <li><a href="#wework"><span>How we work?</span></a></li>
+                                   <li><a href="#ourvision"><span>Our Vision</span></a></li>
+                                   <li><a href="#testimonials"><span>Testimonials</span></a></li>
+                                   <li><a href="#why"><span>Why Hopolite?</span></a></li>
+                                   <li><a href="/service"><span>Service & FAQ</span></a></li>
+                               </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title black"><span>Contact Us</span></div>
+                            <div class="info-panel-content">
+                               <div class="address">
+                                    <p><b>Hopolite LED LIMITED</b></p>
+                                    <p>No.3 Yuanhui Road, Chenjiang Town,Zhongkai Hi-tech Industrial Development Zone,Huizhou City, Guangdong Province, PRC</p>
+                                    <p><b>Tel:</b> (86) 752-89485978</p>
+                                    <p><b>Fax:</b> (86) 752-89485978<p>
+                                    <p><b>Email:</b> <a href="mailto:info@hopolite.com">info@hopolite.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    <div class="info-panel">
+                        <div class="info-panel-title black"><span>Company Profile</span></div>
+                        <div class="info-panel-content">
+                            <div class="about-introduction">
+                                <p><a name="introduction"><b>HOPOLITE LED LIMITED</b></a>, established in 2011, concentrates on LED strips, LED modules, LED panels, LED tubes, LED Bulb, etc. We are the only factory in Shenzhen with complete industrial chain for LED illumination field. Own strong R&D technology and system complete solution, excellent quality control and advanced manufacturing equipment. Can cover all industry, including the product, research design, package, LED driver, the structure of hardware, assembling and testing of lamps, lighting design and installation.</p>
+                                <div class="about-content clearfix">
+                                    <div class="left">
+                                        <span>Factory Tour</span>
+                                        <img src="static/hopolite.jpg" alt="Hopolite LED Limited">
+                                    </div>
+                                    <div class="right">
+                                        <a name="wework"><h4>How We Work?</h4></a>
+                                        <p><b>Good Quality:</b> Never compromise on honesty or quality.<br>
+                                            <b>Low Price:</b> Email us for NO OBLIGATION QUOTE.<br>
+                                            <b>Excellent Customer Service:</b> Fast response with our professional answer.
+                                        </p>
+                                         <a name="ourvision"><h4>Our Vision</h4></a>
+                                        <p>To be a globally respected company with committed professionals using best practices to provide quality products and unique consumer experience.</p>
+                                         <a name="testimonials"><h4>Testimonials</h4></a>
+                                        <p><b>What people like you say?</b><br>
+                                            We work with large brands to small and medium sized enterprises. View a small selection of some we have worked with below.<br>
+                                            <b>Rod Mann:</b> "I think Folonistone is a very good choice for kitchen top."<br>
+                                            <b>David Murray:</b> "Rich: Good to see you have launched your program. Congratulations to you! You did a good job with us in your last company and we would like to be a part of your strong future with the new company."
+                                        </p>
+                                         <a name="why"><h4>Why Hopolite?</h4></a>
+                                        <p>Hopolite adheres to "<b>Prestige first, customer is supreme, pursuing perfect</b>" management aim, with the idea of "<b>Honesty, creativity, pragmatic, efficient</b>" to be service of the customers all over the world. Earnestly carry out the social responsibility, sufficient notice to the customer’s interests. Do our best for the development of global lighting industry.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>  <!--content-->
+{% endblock %}

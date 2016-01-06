@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block HEADER_CONTENT %}
+    <link rel="stylesheet" href="static/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="static/nivo-slider/theme-light.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="static/nivo-slider/jquery.nivo.slider.js"></script>
+{% endblock %}
+
+{% block BODY_CONTENT %}
+    <style>
+    .banner {
+        overflow: hidden;
+        background-image: url(../static/bk1.gif);
+    }
+
+    </style>
+    <!--banner-->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="theme-light">
+                        <div class="ribbon"></div>
+                        <div id="slider" class="nivoSlider">
+                            <img src="static/slider_images/theme1205-1.jpg"  alt="" title="#sliderCaption1" />
+                            <img src="static/slider_images/theme1205-2.jpg"  alt="" title="#sliderCaption2" />
+                            <img src="static/slider_images/theme1205-3.jpg"  alt="" title="#sliderCaption3" />
+                            <img src="static/slider_images/theme1205-4.jpg"  alt="" title="#sliderCaption4"/>
+                        </div>
+                        <div id="sliderCaption1" class="nivo-html-caption">
+                            Paradise Beach - A place where we all wish we were
+                        </div>
+                        <div id="sliderCaption2" class="nivo-html-caption">
+                            2010 World Cup Match - A great panoramic view of a the stadium
+                        </div>
+                        <div id="sliderCaption3" class="nivo-html-caption">
+                            Summer Girl - Does this really need an explanation?
+                        </div>
+                        <div id="sliderCaption4" class="nivo-html-caption">
+                            Starry Sunset - Where day meets night
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('#slider').nivoSlider();
+        });
+    </script>
+    <!--content-->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title">The Latest News</div>
+                            <div class="info-panel-content"><p>Hello</p></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title">Our Projects & Cases</div>
+                            <div class="info-panel-content"><p>Hello</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    <div class="info-panel">
+                        <div class="info-panel-title">About Our Company</div>
+                        <div class="info-panel-content">
+                            <p><strong>Hopolite</strong> adheres to “Prestige first, customer is supreme, pursuing perfect” management aim, with the idea of “Honesty, creativity, pragmatic, efficient” to be service of the customers all over the world. Earnestly carry out the social responsibility, sufficient notice to the customer’s interests. Do our best for the development of global lighting industry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--content-->
+{% endblock %}
