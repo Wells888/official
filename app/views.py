@@ -8,11 +8,9 @@ PAGE_LIST_SIZE = 4
 @app.route('/')
 def do_home_page():
     #return 'Hello World Hopoite'
-    try:
-        catalogues = controllers.getCatalogueList()
-        return render_template('home.html', catalogues = catalogues)
-    except Exception,e:
-        return Exception,e
+    #catalogues = controllers.getCatalogueList()
+    #return render_template('home.html', catalogues = catalogues)
+    return render_template('home.html')
 
 @app.route('/service')
 def do_service_page():
