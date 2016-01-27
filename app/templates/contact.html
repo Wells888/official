@@ -12,10 +12,14 @@
         width: 655px;
     }
     </style>
+    <script>
+       function listItems(obj){
+           $(obj).next("ul").toggle(240);
+       }
+    </script>
 {% endblock %}
 
 {% block BODY_CONTENT %}
-
     <!--content-->
     <div class="content">
         <div class="container">
