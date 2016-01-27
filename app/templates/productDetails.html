@@ -29,6 +29,9 @@
                                             <a class="header" href="javascript:void(0)" onclick="listItems(this)"><span>{{ catalogue.name}}</span></a>
                                             <ul>
                                         {% endif %}
+                                        {% if catalogue['items']|length == 0 %}
+                                             <li><span class="no-record">No Record</span></li>
+                                         {% endif %}
                                         {% for item in catalogue['items'] %}
                                             {% if item.id == cur_catalogue.item.id %}
                                                 <li><a href="/product?cid={{ catalogue.id }}&itemid={{ item.id }}" class="active" href="javascript:void(0)"><span>{{ item.name }}</span></a></li>
@@ -49,10 +52,12 @@
                             <div class="info-panel-content">
                                 <div class="address">
                                     <p><b>Hopolite LED LIMITED</b></p>
-                                    <p>No.3 Yuanhui Road, Chenjiang Town,Zhongkai Hi-tech Industrial Development Zone,Huizhou City, Guangdong Province, PRC</p>
+                                    <p>C Building, Xinshidai Industrial Park, Shilong Community, Shiyan Town, Bao'an District, Shenzhen, China.</p>
                                     <p><b>Tel:</b> (86) 752-89485978</p>
                                     <p><b>Fax:</b> (86) 752-89485978<p>
                                     <p><b>Email:</b> <a href="mailto:info@hopolite.com">info@hopolite.com</a></p>
+                                     <p><b>Skype:</b> <a href="skype:hopolite?chat">hopolite</a></p>
+                                    <image class="qr-code-min" src="static/hopolite_QRC_100px.png">
                                 </div>
                             </div>
                         </div>
@@ -118,7 +123,8 @@
                                 font-weight: bold;
                                 font-size: 12pt;
                                 line-height: 24px;
-                                margin: 15px 0px;
+                                margin: 10px 0px;
+                                color: #007fff;
                             }
 
                              .product-details-item .info-show li {
@@ -127,8 +133,9 @@
                              }
 
                              .product-details-item .info-show li p {
-                                 height: 100px;
+                                 height: 140px;
                                  overflow: hidden;
+                                 text-align: justify;
                              }
 
                             .product-details-item .description .description-title {
@@ -151,14 +158,19 @@
                             .product-details-item .description .description-content,
                             .product-details-item .description .description-content p{
                                 font-size: 10pt;
-                                line-height: 16px;
+                                line-height: 24px;
                                 margin: 0;
+                                padding: 0;
+                                color: #333;
                             }
 
                             .product-details-item .description .description-content h4 {
-                                font-size: 11pt;
+                                font-size: 12pt;
                                 font-weight: bold;
-                                line-height: 20px;
+                                line-height:34px;
+                                color: #007fff;
+                                margin: 0;
+                                padding: 0;
                             }
 
                             .product-details-item .description .description-content img {
@@ -176,7 +188,12 @@
                                 <div class="product-details-item">
                                     <div class="product-info clearfix">
                                         <div class="img-show">
-                                            <img class="main-image" src="static/images/{{ product.images[0].image.url }}">
+                                            <!--Product Image-->
+                                            {% if product.imagelinks.first() != None %}
+                                                <img class="main-image" src="static/images/products/{{ product.imagelinks.first().productimage.name }}">
+                                            {% else %}
+                                                <img class="main-image" src="">
+                                            {% endif %}
                                         </div>
                                         <div class="info-show">
                                             <ul>
@@ -184,9 +201,7 @@
                                                 <li><b>Part NO: </b>{{ product.partno }}</li>
                                                 <li><b>Power: </b>{{ product.power }}</li>
                                                 <li><b>Voltage: </b>{{ product.voltage }}</li>
-                                                <li><b>Introduction: </b>
-                                                    <p>{{ product.introduction }}</p>
-                                                </li>
+                                                <li><p><b>Introduction: </b>{{ product.introduction }}</p></li>
                                             </ul>
                                         </div>
                                     </div>

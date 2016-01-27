@@ -15,17 +15,46 @@ ul, li {
 a { text-decoration: none;}
 
 
+h3 {
+    font-size: 16pt;
+}
+
+
+.qr-code-min {
+    width: 100px;
+    margin: 5px auto;
+}
 
 .top {
     margin: auto;
     width: 100%;
     padding: 30px 0px 0px;
    /* background-color: #028cb9;*/
-    background-color: #333;
+    background-color: #000;
 }
 
 .top .logo {
     padding-bottom: 0px;
+}
+
+
+.our-links {
+    display: block;
+    width: 680px;
+    text-align: right;
+    color: #fff;
+}
+
+.our-links a {
+    padding-right: 7px;
+    line-height: 44px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.our-links a:hover {
+    color: #ccc;
+    text-decoration: none;
 }
 
 .menu {
@@ -38,23 +67,22 @@ a { text-decoration: none;}
 }
 
 .menu > ul > li > a {
-    width: 80px;
     height: 34px;
     line-height: 34px;
     text-align: center;
     display: block;
     color: #fff;
-    font-weight: bold;
     position: relative;
-    padding-top: 4px;
+    font-weight: bold;
+    padding: 0px 14px 4px;
+    border: none;
 }
 
 .menu > ul > li > a:hover,
 .menu > ul > li > a.item-active{
-    color: #a9a9a9;
-    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 5px solid #fff;
     text-decoration: none;
-    border-top: 4px solid #a9a9a9;
 }
 
 .menu > ul > li > ul {
@@ -63,9 +91,11 @@ a { text-decoration: none;}
     margin: 0;
     padding: 5px 20px 5px 5px;
     color: #fff;
-    background-color: #333;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.92);
     font-size: 10pt;
     text-transform: uppercase;
+    z-index: 999;
 }
 
 .menu > ul > li > ul > li {
@@ -84,9 +114,8 @@ a { text-decoration: none;}
 
 
 .menu > ul > li > ul > li > a:hover{
-    color: #a9a9a9;
     padding-left: 10px;
-    border-left: 4px solid #a9a9a9;
+    border-left: 4px solid #fff;
     text-decoration: none;
 }
 
@@ -95,20 +124,6 @@ a { text-decoration: none;}
 }
 
 
-.banner {
-    position: relative;
-    overflow: auto;
-    z-index: -1;
-}
-
-.banner li {
-    list-style: none;
-    height: 400px;
-}
-
-.banner ul li {
-    float: left;
-}
 
 
 .content {
@@ -133,18 +148,18 @@ a { text-decoration: none;}
 .info-panel > .info-panel-title{
     line-height: 30px;
     font-weight: bold;
-    color: #333;
+    color: #000;
     font-size: 12pt;
 }
 
 .info-panel > .info-panel-title > span{
     display: inline-block;
-    border-bottom: 3px solid #333;
+    border-bottom: 3px solid #000;
     padding: 0px 5px;
 }
 
 .info-panel  .black {
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #000;
 }
 
 .info-panel .info-panel-content{
@@ -152,9 +167,23 @@ a { text-decoration: none;}
     font-size: 10pt;
 }
 
+.main-panel .info-panel-content{
+    min-height: 400px;
+}
+
 .info-panel > .info-panel-content > p {
     line-height: 15px;
-    color: #333;
+    color: #000;
+}
+
+
+
+.info-panel > .info-panel-content .date {
+    display: inline-block;
+    padding: 0 2px;
+    line-height: 18px;
+    border: 1px solid #494a4d;
+    color: #494a4d;
 }
 
 .item-list,
@@ -175,6 +204,11 @@ a { text-decoration: none;}
     line-height: 24px;
 }
 
+.catalogue-nav-list span.no-record {
+    padding: 0px 10px;
+    color: #dfdfdf;
+}
+
 .catalogue-nav-list  ul {
    display: none;
 }
@@ -185,7 +219,7 @@ a { text-decoration: none;}
     display: block;
     width: 100%;
     text-decoration: none;
-    color: #333;
+    color: #000;
 }
 
 .catalogue-nav-list ul li a:hover,
@@ -193,9 +227,11 @@ a { text-decoration: none;}
 {
     background-color: #007fff;
     color: #fff;
+    padding-left: 20px;
 }
 
 .item-list li a,
+.catalogue-nav-list span.header,
 .catalogue-nav-list a.header{
     width: 100%;
     padding: 0px 5px;
@@ -203,15 +239,17 @@ a { text-decoration: none;}
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
-    color: #333;
+    color: #000;
 }
 
 .item-list li a:hover,
 .catalogue-nav-list a.header:hover{
     background-color: #dfdfdf;
+    padding-left: 15px;
 }
 
-
+.case-list,
+.news-list,
 .product-list {
     display: block;
     min-height: 400px;
@@ -220,12 +258,15 @@ a { text-decoration: none;}
     font-size: 10pt;
 }
 
+.case-list hr,
+.news-list hr,
 .product-list hr{
     height: 1px;
     border: none;
-    border-top: 1px dashed #ccc;
+    border-top: 1px dashed #dfdfdf;
 }
 
+.case-item,
 .product-item {
     width: 600px;
     padding: 5px;
@@ -234,12 +275,14 @@ a { text-decoration: none;}
     display: block;
 }
 
+.case-item-info,
 .product-item-info {
     float: left;
     margin-left: 20px;
     text-align: left;
 }
 
+.case-item-info .case-title,
 .product-item-info .product-title {
     display: block;
     width: 400px;
@@ -252,10 +295,18 @@ a { text-decoration: none;}
     line-height: 34px;
 }
 
+.case-item-info .case-intro,
 .product-item-info .product-parameter {
     display: block;
     width: 400px;
-    height: 90px;
+    height: 80px;
+    overflow: hidden;
+    margin-bottom: 17px;
+}
+
+
+.case-item-info .case-intro p{
+    line-height: 16px;
 }
 
 
@@ -264,7 +315,7 @@ a { text-decoration: none;}
     text-overflow: ellipsis;
     white-space: nowrap;
     line-height: 16px;
-    width: 300px;
+    width:300px;
 }
 
 
@@ -275,6 +326,10 @@ a { text-decoration: none;}
     height:160px;
     overflow: hidden;
     float: left;
+}
+
+.img-item:hover{
+    border: 1px solid #007fff;
 }
 
 
@@ -290,7 +345,7 @@ a { text-decoration: none;}
     line-height: 28px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #333;
+    color: #000;
 }
 
 .service .service-item {
@@ -361,9 +416,9 @@ a { text-decoration: none;}
 }
 
  .address p{
-        padding: 0px 5px;
+        padding: 0;
         margin: 0;
-        margin-bottom: 5px;
+        line-height: 24px;
  }
 
  .about-introduction,
@@ -425,22 +480,64 @@ a { text-decoration: none;}
  }
 
 
+
 .about {
     background-color: #ddd;
-    font-size: 10pt;
+    font-size: 11pt;
+    padding: 15px 0;
+}
+
+.about h3{
+    margin: 0;
+    padding: 0;
+}
+
+.about p {
+    line-height: 27px;
+}
+
+.about a{
+    text-decoration: none;
+    color: #000;
+    display: block;
+    line-height: 27px;
+}
+
+.about a:hover{
+    text-decoration: underline;
+}
+
+
+.about p {
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+}
+
+.about p a {
+    display: inline-block;
 }
 
 
 
-
-.about h3 {
-    font-size: 16pt;
+.not-found h3 {
+    color: #007fff;
 }
+
+
+
 
 .foot{
-    background-color: #333;
+    background-color: #000;
     text-align: center;
     color: #fff;
     padding:15px;
+}
+
+
+
+.foot p{
+    margin: 0;
+    padding: 0;
 }
 

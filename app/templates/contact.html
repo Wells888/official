@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block HEADER_CONTENT %}
+    <style>
+    .contact-info h4{
+        font-weight: bold;
+    }
+
+    .contact-info .map{
+        display: block;
+        margin: auto;
+        width: 655px;
+    }
+    </style>
+{% endblock %}
+
+{% block BODY_CONTENT %}
+
+    <!--content-->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title black"><span>Product Navigation</span></div>
+                            <div class="info-panel-content">
+                                 <ul class="catalogue-nav-list">
+                                    {% for catalogue in catalogues %}
+                                    <li>
+                                        <a class="header" href="javascript:void(0)" onclick="listItems(this)"><span>{{ catalogue.name}}</span></a>
+                                        <ul>
+                                         {% if catalogue['items']|length == 0 %}
+                                             <li><span class="no-record">No Record</span></li>
+                                         {% endif %}
+                                         {% for item in catalogue['items'] %}
+                                            <li><a href="/product?cid={{ catalogue.id }}&itemid={{ item.id }}"><span>{{ item.name }}</span></a></li>
+                                        {% endfor %}
+                                        </ul>
+                                     </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="info-panel main-panel">
+                            <div class="info-panel-title black"><span>Contact Us</span></div>
+                            <div class="info-panel-content">
+                               <div class="address">
+                                    <p><b>Hopolite LED LIMITED</b></p>
+                                    <p>C Building, Xinshidai Industrial Park, Shilong Community, Shiyan Town, Bao'an District, Shenzhen, China.</p>
+                                    <p><b>Tel:</b> (86) 752-89485978</p>
+                                    <p><b>Fax:</b> (86) 752-89485978<p>
+                                    <p><b>Email:</b> <a href="mailto:info@hopolite.com">info@hopolite.com</a></p>
+                                    <p><b>Skype:</b> <a href="skype:hopolite?chat">hopolite</a></p>
+                                    <image class="qr-code-min" src="static/hopolite_QRC_100px.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    <div class="info-panel">
+                        <div class="info-panel-title black"><span>Contact Us</span></div>
+                        <div class="info-panel-content">
+                            <div class="contact-info">
+                                <h4>Our Position:</h4>
+                                <div class="map">
+                                    <iframe style="width: 655px; height: 400px; border: none; overflow: hidden;" src="static/map/map.html"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  <!--content-->
+{% endblock %}

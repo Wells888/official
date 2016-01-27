@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block HEADER_CONTENT %}
+{% endblock %}
+
+{% block BODY_CONTENT %}
+    <script>
+       function listItems(obj){
+           $(obj).next("ul").toggle(240);
+       }
+    </script>
+
+    <!--content-->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title black"><span>Product Categories</span></div>
+                            <div class="info-panel-content">
+                                <ul class="catalogue-nav-list">
+                                    {% for catalogue in catalogues %}
+                                    <li>
+                                        {% if catalogue.id == cur_catalogue.id %}
+                                            <span class="header">{{ catalogue.name}}</span>
+                                            <ul style="display: block;">
+                                            {% else %}
+                                            <a class="header" href="javascript:void(0)" onclick="listItems(this)"><span>{{ catalogue.name}}</span></a>
+                                            <ul>
+                                        {% endif %}
+                                         {% if catalogue['items']|length == 0 %}
+                                             <li><span class="no-record">No Record</span></li>
+                                         {% endif %}
+                                        {% for item in catalogue['items'] %}
+                                            {% if item.id == cur_catalogue.item.id %}
+                                                <li><a class="active" href="javascript:void(0)"><span>{{ item.name }}</span></a></li>
+                                                {% else %}
+                                                <li><a href="productDebug?cid={{ catalogue.id }}&itemid={{ item.id }}"><span>{{ item.name }}</span></a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </ul>
+                                     </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title black"><span>Contact Us</span></div>
+                            <div class="info-panel-content">
+                               <div class="address">
+                                    <p><b>Hopolite LED LIMITED</b></p>
+                                    <p>No.3 Yuanhui Road, Chenjiang Town,Zhongkai Hi-tech Industrial Development Zone,Huizhou City, Guangdong Province, PRC</p>
+                                    <p><b>Tel:</b> (86) 752-89485978</p>
+                                    <p><b>Fax:</b> (86) 752-89485978<p>
+                                    <p><b>Email:</b> <a href="mailto:info@hopolite.com">info@hopolite.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    <div class="info-panel product-list">
+                        <div class="info-panel-title black"><span>Product List</span></div>
+                        <div class="info-panel-content">
+                            <ul class="breadcrumb">
+                                <li>
+                                    Home
+                                    <span class="divider">/</span>
+                                </li>
+                                 <li>
+                                    Products
+                                    <span class="divider">/</span>
+                                </li>
+                                <li>
+                                    {{ cur_catalogue.name }}
+                                    <span class="divider">/</span>
+                                </li>
+                                    <li>{{ cur_catalogue.item.name }}</li>
+                            </ul>
+
+
+                            {% if products|length == 0 %}
+                                <div class="not-found">
+                                    <h3>Sorry, Not Found.</h3>
+                                    <p>There may be some problems in server. Please try it later or contact us(<a href="mailto:info@hopolite.com">info@hopolite.com</a>).</p>
+                                    <p>You can also visit our <a href="http://hopolite.en.alibaba.com">Alibaba Official Shop</a>.</p>
+                                </div>
+                            {% endif %}
+
+                            <!--Product List Start-->
+                            {% for product in products %}
+                            <div class="product-item clearfix">
+                                {% if product.imagelinks[0] == None %}
+                                <img class="img-item" src="">
+                                {% else %}
+                                <img class="img-item" src="static/images/products/{{ product.imagelinks.first().productimage.name }}">
+                                {% endif %}
+                                <div class="product-item-info">
+                                    <div class="product-title">{{ product.title }}</div>
+                                    <div class="product-parameter">
+                                        <p>Part NO: {{ product.partno }}</p>
+                                        <p>Power: {{ product.power }}</p>
+                                        <p>Voltage: {{ product.voltage }}</p>
+                                    </div>
+                                    <a class="btn btn-primary" href="/product_details?pid={{ product.id }}">Details</a>
+                                    <a class="btn btn-danger" href="/del_product?pid={{ product.id }}">Delete It</a>
+                                </div>
+                            </div>
+
+                            <hr>
+                            {% endfor %}
+
+
+                            <!--Product List End-->
+                            <div class="pagination" style="margin: 40px auto 0px; text-align: center;">
+                                <ul>
+                                    {% if page_size ==0 or page_size == 1 or page == 1 %}
+                                    <li class="disabled"><a href="javascript: void(0)">←</a></li>
+                                    {% else %}
+                                    <li><a href="/productDebug?cid={{ cur_catalogue.id }}&itemid={{ cur_catalogue.item.id }}&page={{ page - 1 }}">←</a></li>
+                                    {% endif %}
+
+                                    {% for i in range(1, page_size+1) %}
+                                        {% if i== page %}
+                                             <li class="active"><a href="javascript: void(0)">{{ i }}</a></li>
+                                        {% else %}
+                                             <li><a href="/productDebug?cid={{ cur_catalogue.id }}&itemid={{ cur_catalogue.item.id }}&page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if page_size ==0 or page_size == 1 or page == page_size %}
+                                    <li class="disabled"><a href="javascript: void(0)">→</a></li>
+                                    {% else %}
+                                    <li><a href="/productDebug?cid={{ cur_catalogue.id }}&itemid={{ cur_catalogue.item.id }}&page={{ page + 1 }}">→</a></li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  <!--content-->
+{% endblock %}

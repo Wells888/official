@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="static/bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/css/addProductStyle.css"/>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/angular.min.js"></script>
+    <script src="static/js/angular-route.min.js"></script>
+    <script src="static/js/ng-file-upload-all.min.js"></script>
+    <script src="static/wysihtml/dist/wysihtml-toolbar.min.js"></script>
+    <script src="static/wysihtml/parser_rules/advanced_and_extended.js"></script>
+    <script src="static/js/bossControllers.js"></script>
+</head>
+{% raw %}
+<body ng-app="boss">
+<div class="container" ng-controller="ProductCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default" >
+                <div class="panel-heading"><h4>Add  Product</h4></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <form class="form-horizontal" name="newProduct">
+                            <div class="form-group">
+                                <label for="input-date" class="col-md-2 control-label">Date</label>
+                                <div class="col-md-4">
+                                    <input type="date" class="form-control" id="input-date" ng-model="date" placeholder="" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-clg" class="col-md-2 control-label">Catalogue & Item</label>
+                                <div class="col-md-3">
+                                    <select class="form-control" ng-init="UpdateClg()" ng-model="clgId" ng-change="SelectClg(clgId)" required>
+                                        <option ng-repeat="clg in clgs" value="{{ clg.id }}" >{{ clg.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control" ng-model="clgItemId" ng-change="SelectClgItem(clgItemId)" required>
+                                        <option ng-repeat="item in items" value="{{ item.id }}">{{ item.name }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-product-title" class="col-md-2 control-label">Product Title</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="input-product-title" ng-model="title" placeholder="Product Title" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-keywords" class="col-md-2 control-label">Keywords</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="input-keywords" ng-model="keywords" placeholder="Keywords" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-product-title" class="col-md-2 control-label">Part NO</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="input-product-title" ng-model="partno" placeholder="Part NO" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-product-title" class="col-md-2 control-label">Power(W)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="input-product-title" ng-model="power" placeholder="Power(such as '14.4W/M')" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-product-title" class="col-md-2 control-label">Voltage(V)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="input-product-title" ng-model="voltage" placeholder="Voltage(such as 'DC12V/24V')" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-product-introduction" class="col-md-2 control-label">Introduction</label>
+                                 <div class="col-md-9">
+                                    <textarea class="form-control" rows="4"  placeholder="Introduction" ng-model="introduction"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 control-label">Product Pics(280x280)</label>
+                                <div class="col-md-9">
+                                    <a class="btn" ng-class="{'btn-default': !choosePictures, 'btn-warning': choosePictures }" ng-click="ChoosePictures()"><span class="glyphicon glyphicon-picture"></span> Choose Pictures</a>
+                                     <div class="row show-image">
+                                        <div class="col-md-2"  ng-repeat="image in productImages">
+                                            <a href="javascript:void(0)" class="thumbnail" ng-click="ClickImage(image)">
+                                                <img src="{{ image.url }}" alt="{{ image.name }}">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="choose-image-dialog" ng-show="choosePictures">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label"><span class="glyphicon glyphicon-upload"></span> Upload Picture</label>
+                                                <div class="col-md-5">
+                                                    <input type="file" class="form-control"  placeholder="Select File To Upload" ngf-select="UploadFile($file)">
+                                                </div>
+                                                 <div class="col-md-2">
+                                                    <a class="btn btn-primary" ng-click="ShowMoreImages()">Show More Images</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" ng-init="UpdateImages(false)">
+                                            <div class="col-md-3"  ng-repeat="image in images">
+                                                <a href="javascript:void(0)" class="thumbnail" ng-click="ClickImage(image)">
+                                                    <img src="{{ image.url }}" alt="{{ image.name }}">
+                                                </a>
+                                                 <div  class="caption">
+                                                        <h5>{{ image.name }}</h5>
+                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 control-label">Description(MaxWidth650)</label>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <!-- toolbar with suitable buttons and dialogues -->
+                                            <div id="toolbar" style="margin-bottom: 10px;">
+                                                <a class="btn btn-default" data-wysihtml5-command="bold" ng-disabled="htmlEditorFlag"><b>Bold</b></a>
+                                                <a class="btn btn-default" data-wysihtml5-command="italic" ng-disabled="htmlEditorFlag"><i>Italic</i></a>
+                                                <a class="btn btn-default" data-wysihtml5-command="underline" ng-disabled="htmlEditorFlag"><u>Underline</u></a>
+                                                <a class="btn btn-default" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h4" ng-disabled="htmlEditorFlag"><strong>Header</strong></a>
+                                                <a class="btn btn-default" data-wysihtml5-command="formatBlock" data-wysihtml5-command-blank-value="true" ng-disabled="htmlEditorFlag">Plaintext</a>
+                                                <a class="btn btn-default" data-wysihtml5-command="insertImage" ng-disabled="htmlEditorFlag"><span class="glyphicon glyphicon-picture"></span> Insert Picture</a>
+                                                <a class="btn" ng-class="{'btn-default': !htmlEditorFlag, 'btn-danger': htmlEditorFlag }" ng-click="EditHtml()">{{ editHtmlBtn }}</a>
+                                                <div data-wysihtml5-dialog="insertImage" style="display: none;">
+                                                    <div class="choose-image-dialog">
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label"><span class="glyphicon glyphicon-upload"></span> Upload Picture</label>
+                                                                <div class="col-md-5">
+                                                                    <input type="file" class="form-control"  placeholder="Select File To Upload" ngf-select="UploadFile($file)">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <a class="btn btn-primary" ng-click="ShowMoreImages()">Show More Images</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3"  ng-repeat="image in images">
+                                                                <a href="javascript:void(0)" class="thumbnail" ng-click="SelectImage(image.url)">
+                                                                    <img src="{{ image.url }}" alt="{{ image.name }}">
+                                                                </a>
+                                                                <div  class="caption">
+                                                                    <h5>{{ image.name }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input style="display: none;" data-wysihtml5-dialog-field="src" ng-model="insertImageSrc" class="text">
+                                                    <a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+                                                    <a class="btn btn-default"  data-wysihtml5-dialog-action="cancel">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" ng-hide="htmlEditorFlag">
+                                            <div class="col-md-12">
+                                                <!-- element to edit -->
+                                                <textarea class="form-control" id="editor" rows="20" data-placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                         <div class="row">
+                                            <div class="col-md-12">
+                                                <textarea class="form-control" rows="20" id="html-editor" ng-model="htmlEditorValue" ng-show="htmlEditorFlag" style="border: 1px solid #cb171e"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-2">
+                            <button class="btn btn-primary" ng-disabled="newProduct.$invalid" data-ng-click="Submit()" style="margin-top: 15px;">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endraw %}
+</html>

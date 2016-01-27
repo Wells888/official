@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #dddddd;
+}
+
+a {text-decoration: none;}
+
+ul { list-style: none;}
+
+.header {
+    margin-top: 10px;
+}
+
+.header .container {
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+
+.menu-list > ul{
+}
+
+.menu-list ul li {
+    margin: 0;
+    display: block;
+    position: relative;
+}
+
+.menu-list ul li a {
+    display: block;
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    background-color: #fff;
+    overflow: hidden;
+    font-size: 10pt;
+    color: #022d33;
+}
+
+.menu-list > ul> li > a {
+    font-weight: bold;
+}
+
+.menu-list > ul > li > a.active,
+.menu-list > ul > li > a:hover {
+    text-decoration: none;
+    background-color: #022d33;
+    color: #fff;
+}
+
+.menu-list > ul > li  a.delete {
+    text-align:right;
+    height: 20px;
+    font-size: 8pt;
+    line-height: 20px;
+    background-color: #ffff66;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.menu-list > ul > li  a.delete:hover{
+    text-decoration: none;
+    background-color: #cc044d;
+}
+
+.menu-list > ul > li > a.active {
+
+}
+
+.menu-list ul li a.inner {
+    background-color: #008a83;
+    font-size: 8pt;
+    color: #fff;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+.menu-list ul li a.inner.active,
+.menu-list ul li a.inner:hover {
+    background-color: #24b445;
+    text-decoration: none;
+}
+
+
+
+
+

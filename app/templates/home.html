@@ -1,80 +1,240 @@
 {% extends "base.html" %}
 {% block HEADER_CONTENT %}
     <link rel="stylesheet" href="static/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="static/nivo-slider/theme-light.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="static/nivo-slider/business_theme.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="static/nivo-slider/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="static/nivo-slider/jquery.nivo.slider.js"></script>
 {% endblock %}
 
 {% block BODY_CONTENT %}
     <style>
-    .banner {
-        overflow: hidden;
-        background-image: url(../static/bk1.gif);
+     .banner {
+     }
+
+     .intro-main p{
+         text-align: justify;
+         font-size: 11pt;
+         line-height: 27px;
+         padding:0;
+         margin: 0;
+         font-weight: 400;
+     }
+
+
+     .intro-main h3,
+      .intro-part h3{
+          margin: 0;
+          padding: 0;
+          color: #007fff;
+          line-height: 58px;
+          font-weight: 500;
+      }
+
+     .intro-part p{
+         line-height: 27px;
+         font-size: 11pt;
+         text-align: justify;
+         font-weight: 400;
+     }
+
+     .news-box,
+     .case-box,
+     .product-box{
+         display: block;
+         height: 296px;
+         position: relative;
+     }
+
+      .news-box img{
+          width: 100%;
+          height: 100px;
+          background-color: #000088;
+          margin-bottom: 10px;
+      }
+
+      .news-box h3{
+          margin: 0;
+          padding: 0;
+          border-bottom: 4px solid #000;
+          margin-bottom: 15px;
+      }
+
+      .news-box span{
+          display: block;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+      }
+
+      .news-box a{
+          line-height: 34px;
+          font-weight: 400;
+          text-decoration: none;
+          color: #000;
+      }
+
+       .news-box a:hover{
+           text-decoration: underline;
+       }
+
+      .news-box ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+      }
+
+       .news-box ul li {
+
+       }
+
+
+    .case-box{
+        background-image: url(../static/case_pic.jpg);
+        display: block;
+        background-size: cover;
     }
+
+
+     .product-box{
+        background-image: url(../static/product_pic.jpg);
+        display: block;
+        background-size: cover;
+    }
+
+      .product-box .caption,
+     .case-box .caption{
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         left: 0;
+         top:0;
+         display: none;
+          text-align: center;
+          vertical-align: middle;
+     }
+
+     .case-box a,
+     .product-box a{
+         text-decoration: none;
+     }
+
+
+       .product-box .caption{
+           background-color: rgba(18,74,200,0.9);
+       }
+
+         .case-box .caption {
+             background-color: rgba(00,105,00,0.9);
+         }
+
+      .product-box .caption h3,
+      .case-box .caption h3{
+          color:  #fff;
+          line-height: 270px;
+          font-weight: bold;
+      }
+
+     .product-box:hover .caption,
+     .case-box:hover .caption{
+         display: block;
+     }
 
     </style>
     <!--banner-->
     <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="span12">
-                    <div class="theme-light">
+                    <div class="business-theme">
                         <div class="ribbon"></div>
                         <div id="slider" class="nivoSlider">
-                            <img src="static/slider_images/theme1205-1.jpg"  alt="" title="#sliderCaption1" />
-                            <img src="static/slider_images/theme1205-2.jpg"  alt="" title="#sliderCaption2" />
-                            <img src="static/slider_images/theme1205-3.jpg"  alt="" title="#sliderCaption3" />
-                            <img src="static/slider_images/theme1205-4.jpg"  alt="" title="#sliderCaption4"/>
+                            <img src="static/slider_images/led_modules.jpg"  alt="" title="#sliderCaption1" />
+                            <img src="static/slider_images/led_strips.jpg"  alt="" title="#sliderCaption2" />
+                            <img src="static/slider_images/led_panel_lights.jpg"  alt="" title="#sliderCaption3" />
+                            <img src="static/slider_images/aluminium_profile.jpg"  alt="" title="#sliderCaption4"/>
                         </div>
                         <div id="sliderCaption1" class="nivo-html-caption">
-                            Paradise Beach - A place where we all wish we were
+                            <h2>LED Module</h2>
+                            <p>Adopting high brightness SMD3528/SMD2835/SMD5050/SMD5630 as the lighting source</p>
+                            <p>ABS module and PVC module are available</p>
                         </div>
                         <div id="sliderCaption2" class="nivo-html-caption">
-                            2010 World Cup Match - A great panoramic view of a the stadium
+                           <h2>Flexible LED Strip</h2>
+                            <p>IP Rank Option: IP20, IP54, IP65, IP68</p>
+                            <p>Color Available: Pure White, Warm White, Red, Green, Blue, RGB</p>
+                            <p>Lighting Source: SMD3528, SMD2835, SMD5050, SMD5630</p>
                         </div>
                         <div id="sliderCaption3" class="nivo-html-caption">
-                            Summer Girl - Does this really need an explanation?
+                            <h2>LED Panel light</h2>
+                            <p>Leading A Healthy Life</p>
+                            <p>Uniform Brightness</p>
+                            <p>Energy-saving</p>
+                            <p>Special different view angles, mixing lighting design. Great light evenness, no dark zones.</p>
                         </div>
                         <div id="sliderCaption4" class="nivo-html-caption">
-                            Starry Sunset - Where day meets night
+                            <h2>Aluminium Profile</h2>
+                            <p>LP/LT/LO/LV Series and Double Series Available</p>
+                            <p>Standard lengths : 0.5m, 1.0m, 1.5m, 2.0m, 2.5m. Other customized length also be acceptable.</p>
+                            <p>Pecycle material ,it in favor of protect environment.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script type="text/javascript">
         $(window).load(function() {
-            $('#slider').nivoSlider();
+            $('#slider').nivoSlider({
+			effect: 'random',
+			animSpeed:400,
+			pauseTime:5000,
+			startSlide:0,
+			directionNav:false,
+			directionNavHide:false,
+			controlNav:true,
+			controlNavThumbs:false,
+			keyboardNav:true,
+			pauseOnHover:true,
+			captionOpacity:0.8,
+			afterLoad: function(){
+				$(".nivo-caption").animate({left:"0"}, {easing:"easeOutBack", duration: 500})
+			},
+			beforeChange: function(){
+				$(".nivo-caption").animate({left:"-500"}, {easing:"easeInBack", duration: 500})
+			},
+			afterChange: function(){
+				$(".nivo-caption").animate({left:"0"}, {easing:"easeOutBack", duration: 500})
+			}
+		});
         });
     </script>
     <!--content-->
     <div class="content">
         <div class="container">
             <div class="row">
-                <div class="span3">
-                    <div class="row">
-                        <div class="info-panel">
-                            <div class="info-panel-title">The Latest News</div>
-                            <div class="info-panel-content"><p>Hello</p></div>
+                    <div class="span4 news-box">
+                        <div class="news-box">
+                            <h3>Recent Posts</h3>
+                            <img src="static/news.jpg">
+                            <ul>
+                                {% if newses != None %}
+                                     {% for news in newses %}
+                                         <li><a href="/news_details?nid={{ news.id }}"><span>{{ news.title }}</span></a></li>
+                                      {% endfor %}
+                                {% endif %}
+                            </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="info-panel">
-                            <div class="info-panel-title">Our Projects & Cases</div>
-                            <div class="info-panel-content"><p>Hello</p></div>
+                    <div class="span4">
+                        <div class="case-box">
+                            <div class="caption">
+                                <a href="/case"><h3>Project Case</h3></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="span9">
-                    <div class="info-panel">
-                        <div class="info-panel-title">About Our Company</div>
-                        <div class="info-panel-content">
-                            <p><strong>Hopolite</strong> adheres to “Prestige first, customer is supreme, pursuing perfect” management aim, with the idea of “Honesty, creativity, pragmatic, efficient” to be service of the customers all over the world. Earnestly carry out the social responsibility, sufficient notice to the customer’s interests. Do our best for the development of global lighting industry.</p>
+                    <div class="span4">
+                        <div class="product-box">
+                             <div class="caption">
+                                <a href="/product"><h3>Our Product</h3></a>
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div><!--content-->

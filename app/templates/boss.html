@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Boss of Hopolite</title>
+
+    <link rel="stylesheet" href="static/bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/css/style2.css"/>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/angular.min.js"></script>
+    <script src="static/js/angular-route.min.js"></script>
+    <script src="static/js/ng-file-upload-all.min.js"></script>
+    <script src="static/js/bossControllers.js"></script>
+</head>
+{% raw %}
+<body ng-app="boss">
+<nav class="navbar navbar-inverse navbar-static-top" ng-controller="NavCtrl">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#AddCatalogue">Add Catalogue</a></li>
+            <li><a href="#AddCatalogueItem">Add Catalogue Item</a></li>
+            <li><a href="/Op2367aVatAr666ApP">Add Product</a></li>
+             <li><a href="Op2367aVatAr666AcP">Add Case</a></li>
+             <li><a href="/Op2367aVatAr666ANp">Add News</a></li>
+            <li><a href="/productDebug">Debug Product</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="content-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="catalogue-panel" ng-controller="ClgCtrl">
+                    <div class="menu-list" ng-init="UpdateClg()">
+                        <ul>
+                            <li  ng-repeat="clg in clgs">
+                                <a href="javascript:void(0)" ng-class="{active: ClgIsActive(clg.id)}"  data-clg-id="{{ clg.id }}"   ng-click="SelectClg($event)">
+                                    {{ clg.name }}
+                                </a>
+                                <a class="delete" ng-show="ClgIsActive(clg.id)" ng-dblclick="DelClgById(clg.id)"><span class="glyphicon glyphicon-remove"></span></a>
+                                <ul ng-show="ClgIsActive(clg.id)">
+                                    <li ng-repeat="item in clg.items">
+                                        <a href="javascript:void(0)" class="inner" ng-class="{active: ClgItemIsActive(item.id)}" data-item-id="{{ item.id }}" ng-click="SelectClgItem($event)">
+                                            {{ item.name }}
+                                        </a>
+                                        <a class="delete" ng-show="ClgItemIsActive(item.id)" ng-dblclick="DelClgItemById(item.id)"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row" ng-controller="AlertCtrl">
+                    <div class="col-md-12">
+                        <div ng-repeat="alert in alerts" class="alert {{ alert.type }} alert-dismissible" role="alert">
+                             <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="CloseAlert($index)"><span aria-hidden="true">&times;</span></button>
+                            {{ alert.msg }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-view>
+                            <ng-view></ng-view>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+</body>
+{% endraw %}
+</html>

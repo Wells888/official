@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block HEADER_CONTENT %}
+    <style>
+
+        .news-list .news-item * {
+            padding: 0;
+            margin: 0;
+        }
+
+       .news-list .news-item{
+            width: 100%;
+            display: block;
+            margin: 24px 0;
+        }
+
+        .news-item a{
+            line-height: 34px;
+            display: inline-block;
+            text-decoration: none;
+            color: #007fff;
+        }
+
+        .news-item .title{
+            font-weight: bold;
+            font-size: 12pt;
+        }
+
+
+        .news-item p{
+            line-height: 24px;
+            text-align: justify;
+        }
+
+        .news-item a:hover{
+            color: #007fff;
+            text-decoration: underline;
+        }
+    
+
+
+
+
+
+    </style>
+
+{% endblock %}
+
+{% block BODY_CONTENT %}
+    <script>
+       function listItems(obj){
+           $(obj).next("ul").toggle(240);
+       }
+    </script>
+
+    <!--content-->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title black"><span>Product Navigation</span></div>
+                            <div class="info-panel-content">
+                                 <ul class="catalogue-nav-list">
+                                    {% for catalogue in catalogues %}
+                                    <li>
+                                        <a class="header" href="javascript:void(0)" onclick="listItems(this)"><span>{{ catalogue.name}}</span></a>
+                                        <ul>
+                                         {% if catalogue['items']|length == 0 %}
+                                             <li><span class="no-record">No Record</span></li>
+                                         {% endif %}
+                                         {% for item in catalogue['items'] %}
+                                            <li><a href="/product?cid={{ catalogue.id }}&itemid={{ item.id }}"><span>{{ item.name }}</span></a></li>
+                                        {% endfor %}
+                                        </ul>
+                                     </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="info-panel">
+                            <div class="info-panel-title black"><span>Contact Us</span></div>
+                            <div class="info-panel-content">
+                               <div class="address">
+                                    <p><b>Hopolite LED LIMITED</b></p>
+                                    <p>C Building, Xinshidai Industrial Park, Shilong Community, Shiyan Town, Bao'an District, Shenzhen, China.</p>
+                                    <p><b>Tel:</b> (86) 752-89485978</p>
+                                    <p><b>Fax:</b> (86) 752-89485978<p>
+                                    <p><b>Email:</b> <a href="mailto:info@hopolite.com">info@hopolite.com</a></p>
+                                    <p><b>Skype:</b> <a href="skype:hopolite?chat">hopolite</a></p>
+                                    <image class="qr-code-min" src="static/hopolite_QRC_100px.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    <div class="info-panel news-list">
+                        <div class="info-panel-title black"><span>News List</span></div>
+                        <div class="info-panel-content">
+                            <ul class="breadcrumb">
+                                <li>
+                                    Home
+                                    <span class="divider">/</span>
+                                </li>
+                                 <li>
+                                    News
+                                </li>
+                            </ul>
+                            {% if newses|length == 0 %}
+                                 <div class="not-found">
+                                    <h3>Sorry, Not Found.</h3>
+                                    <p>There may be some problems in server. Please try it later or contact us(<a href="mailto:info@hopolite.com">info@hopolite.com</a>).</p>
+                                    <p>You can also visit our <a href="http://hopolite.en.alibaba.com">Alibaba Official Shop</a>.</p>
+                                </div>
+                            {% endif %}
+
+                            <!--News List Start-->
+                            {% for news in newses %}
+                            <div class="news-item">
+                                <a href="/news_details?nid={{ news.id }}"><span class="title">{{ news.title }}</span></a>
+                                <p><span class="date">{{ news.date }}</span> {{ news.introduction }}</p>
+                            </div>
+                            {% endfor %}
+
+
+                            <!--News List End-->
+                            <div class="pagination" style="margin: 40px auto 0px; text-align: center;">
+                                <ul>
+                                    {% if page_size== 0 or page_size == 1 or page == 1 %}
+                                    <li class="disabled"><a href="javascript: void(0)">←</a></li>
+                                    {% else %}
+                                    <li><a href="/news?page={{ page - 1 }}">←</a></li>
+                                    {% endif %}
+
+                                    {% for i in range(1, page_size+1) %}
+                                        {% if i== page %}
+                                             <li class="active"><a href="javascript: void(0)">{{ i }}</a></li>
+                                        {% else %}
+                                             <li><a href="/news?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if page_size== 0 or page_size == 1 or page == page_size %}
+                                    <li class="disabled"><a href="javascript: void(0)">→</a></li>
+                                    {% else %}
+                                    <li><a href="/news?page={{ page + 1 }}">→</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  <!--content-->
+{% endblock %}

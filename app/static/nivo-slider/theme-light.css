@@ -1,0 +1,100 @@
+/*
+Skin Name: Nivo Slider theme1203
+Skin URI: http://www.solagirl.net
+Version: 1.0
+Author: ThemeForest
+Author URI: http://themeforest.net/item/mindset-html-portfolio-magazine-template/full_screen_preview/110789
+*/
+.theme-light {
+	height: 380px;
+    margin: 24px auto 24px;
+    padding: 0px;
+    position: relative;
+    width: 880px;
+}
+.theme-light .nivoSlider {
+	position:relative;
+	background:#fff url(loading.gif) no-repeat 50% 50%;
+    margin-bottom:50px;
+	overflow:hidden;
+}
+/* The slices and boxes in the Slider */
+.theme-light .nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+}
+.theme-light .nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+}
+
+.theme-light .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.theme-light .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.theme-light .nivo-controlNav {
+    position: absolute;
+	right: 15px;
+	top:345px;
+	z-index:999;
+}
+.theme-light .nivo-controlNav a {
+    background: #444;
+    border: 0 none;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 9px;
+    margin-right: 4px;
+    text-indent: -9999px;
+    width: 9px;
+    z-index: 100;
+}
+.theme-light .nivo-controlNav a:hover,
+.theme-light .nivo-controlNav a.active {
+	background-color:#FFFFFF;
+}
+
+.theme-light .nivo-directionNav a {
+	display:none;
+}
+.theme-light a.nivo-nextNav {
+}
+.theme-light a.nivo-prevNav {
+}
+
+.theme-light .nivo-caption {
+	background: #000000;
+    bottom: 0;
+    color: #FFFFFF;
+    font-size: 13px;
+    left: 0;
+    opacity: 0.8;
+    position: absolute;
+    width: 100%;
+    z-index: 89;
+}
+.theme-light .nivo-caption a {
+    color:#fff;
+    text-decoration:none;
+}
+.theme-light .nivo-caption a:hover {
+    color:#fff;
+}
+.theme-light .nivo-caption p {
+	font:12px "Lucida Sans",Helvetica,Arial,Sans-Serif;
+    padding:10px 10px 10px 15px;
+}
+.theme-light .nivo-html-caption {
+	display:none;
+}
