@@ -8,6 +8,6 @@ setup(name='official',
       url='http://www.python.org/sigs/distutils-sig/',
       install_requires=[
 	    'Flask==0.10.1',
-		'SQLAlchemy==2.1'
+		'Flask-SQLAlchemy==2.1'
 	  ]
      )
